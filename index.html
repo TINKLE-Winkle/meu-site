@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>site para meu amorzinho</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="javascript:void(0);" onclick="mudarRota('paginaInicial')">Pagina Inicial</a>
+        <a href="javascript:void(0);" onclick="mudarRota('tempoJuntos')">Tempo Juntos</a>
+        <a href="javascript:void(0);" onclick="mudarRota('timeline')">Linha do Tempo</a>
+        <a href="javascript:void(0);" onclick="mudarRota('messages')">Mensagens</a>
+        <a href="javascript:void(0);" onclick="mudarRota('playlist')">Playlist</a>
+        <a href="javascript:void(0);" onclick="mudarRota('profile')">Perfil</a>
+        <a href="javascript:void(0);" onclick="mudarRota('settings')">Configurações</a>
+        <a href="javascript:void(0);" onclick="mudarRota('sendMessage')">Chat</a>
+    </nav>
+
+    <div class="main-content">
+        <div id="paginaInicial" class="section" style="display: block;">
+            <section class="welcome-banner">
+                <h1>Bem-vindo ao nosso site!</h1>
+                <p>Celebrando nossa história juntos com amor e carinho.</p>
+            </section>           
+            <section class="cta">
+                <a href="#playlist" class="cta-button">Ouça nossa playlist agora!</a>
+            </section>
+        </div>
+        
+        <div id="tempoJuntos" class="section">
+            <h2>⏳ Estamos Juntos Há:</h2>
+            <p id="contador"></p>
+            <button onclick="calcularTempoJuntos()">Calcular Tempo</button>
+        </div>
+        
+        <div id="timeline" class="section">
+            <h3>Linha do Tempo</h3>
+            <div>
+                <h4>14 de Julho de 2024</h4>
+                <p>Primeiro encontro</p>
+            </div>
+            <div>
+                <h4>1º de Janeiro de 2025</h4>
+                <p>Primeiro "eu te amo"</p>
+            </div>
+        </div>
+        
+        <div id="messages" class="section">
+            <h2>💌 Mensagens do Coração</h2>
+            <button id="botaoSurpresa" onclick="mostrarMensagem()">Clique para ver a surpresa 💝</button>
+            <p id="mensagemSurpresa" style="display:none; font-size: 20px; color: #ff4d6d;"></p>
+        </div>
+        
+        <div id="playlist" class="section">
+            <h3>Minha Playlist</h3>
+            <section class="playlist">
+                <h2>Playlist do Casal</h2>
+                <p>Essas são as nossas músicas favoritas! Cada uma delas tem um significado especial para nós.</p>
+                <!-- Player incorporado do Spotify -->
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2k1MSv0dBRrjBSHInZVupK?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
+            <button onclick="connectSpotify()">Conectar ao Spotify</button>
+            <button onclick="playPlaylist('spotify:playlist:2k1MSv0dBRrjBSHInZVupK')">Tocar Playlist</button>
+            <div id="spotify-player"></div>
+            
+            <script>
+              async function connectSpotify() {
+                  const CLIENT_ID = "0a5c9c8b66d143cbb5d5925a5b198bac"; 
+                  const REDIRECT_URI = "http://127.0.0.1:5500"; 
+                  const scope = "streaming user-read-email user-read-private";
+                  const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=${scope}`;
+                  window.location.href = authUrl;
+              }
+            
+              window.onSpotifyWebPlaybackSDKReady = () => {
+                  const token = "SEU_ACCESS_TOKEN_AQUI"; // Pegue após login OAuth
+                  const player = new Spotify.Player({
+                      name: "Meu Player Personalizado",
+                      getOAuthToken: cb => { cb(token); },
+                      volume: 0.5
+                  });
+            
+                  player.addListener("ready", ({ device_id }) => {
+                      console.log("Pronto para tocar com ID:", device_id);
+                  });
+            
+                  player.connect();
+              };
+            </script>
+            <script src="https://sdk.scdn.co/spotify-player.js"></script>
+        </div>
+
+        <div id="profile" class="section">
+            <h3>Meu Perfil</h3>
+            <img src="caminho-da-imagem.jpg" alt="Foto do Perfil" class="profile-img" id="profileImg">
+            <p><strong>Nome:</strong> <span id="nome"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Data de Nascimento:</strong> <span id="dataNascimento"></span></p>
+        </div>
+
+        <div id="settings" class="section">
+            <h3>Configurações</h3>
+            <p><strong>Notificações:</strong></p>
+            <label for="notificacoes">Receber Notificações:</label>
+            <input type="checkbox" id="notificacoes" checked>
+            
+            <p><strong>Modo Escuro:</strong></p>
+            <label for="modoEscuro">Ativar Modo Escuro:</label>
+            <input type="checkbox" id="modoEscuro">
+            <input type="button" value="Salvar Configurações" id="salvarConfigBtn">
+        </div>
+
+        <div id="sendMessage" class="section">
+            <h2>Mensagens</h2>
+            <textarea id="mensagem" placeholder="Digite sua mensagem..."></textarea>
+            <button id="enviarMensagemBtn">Enviar</button>
+        </div>
+    </div>
+
+    <script src="js/site.js"></script>
+    <script>
+        // Exibe a primeira página (Pagina Inicial) por padrão
+        mudarRota("paginaInicial");
+    </script>
+</body>
+</html>

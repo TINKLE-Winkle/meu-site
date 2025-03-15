@@ -1,0 +1,302 @@
+/* Geral */
+body {
+    font-family: "Merriweather", serif;
+    background-color: #F9F9F9; /* Branco muito suave */
+    color: #333333; /* Cinza escuro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+/* Barra de navegação lateral */
+nav {
+    background-color: #4A4A4A; /* Cinza escuro para a barra lateral */
+    padding: 20px;
+    width: 210px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 2px solid #D1D1D1; /* Borda clara à direita */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: normal;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+}
+
+nav a:hover {
+    background-color: #666666; /* Cinza médio para hover */
+    border-color: #D1D1D1; /* Borda visível no hover */
+    color: #fff; /* Deixar o texto branco no hover */
+}
+
+/* Conteúdo principal */
+.main-content {
+    margin-left: 240px; /* Espaço para a barra lateral */
+    width: calc(100% - 240px);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Layout fluido */
+    gap: 20px;
+    border-left: 2px solid #D1D1D1; /* Borda à esquerda do conteúdo */
+}
+
+/* Seções */
+.section {
+    background: #ffffff; /* Fundo branco para dar uma sensação limpa */
+    border-radius: 12px; /* Bordas arredondadas para um design suave */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none; /* Removendo borda extra */
+}
+
+.section:hover {
+    transform: translateY(-4px); /* Efeito de flutuar */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+}
+
+/* Botões */
+#botaoSurpresa {
+    background-color: #555555; /* Cinza médio */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botaoSurpresa:hover {
+    background-color: #666666; /* Cor um pouco mais clara para o hover */
+}
+
+/* Títulos */
+h1, h2 {
+    font-weight: bold;
+    color: #333333; /* Cinza escuro para os títulos */
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+/* Parágrafos */
+p {
+    font-size: 18px;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Tempo juntos, timeline, mensagens, playlist */
+#paginaInicial, #tempoJuntos, #timeline, #messages, #playlist {
+    display: block;
+    border: 2px solid #D1D1D1;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#paginaInicial, #tempoJuntos > div, #timeline > div, #messages > div, #playlist > div {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    border: 2px solid #D1D1D1;
+}
+
+#paginaInicial, #tempoJuntos > div h3, #timeline > div h3, #messages > div h3, #playlist > div h3 {
+    font-size: 20px;
+    color: #333333;
+}
+
+#paginaInicial, #tempoJuntos > div p, #timeline > div p, #messages > div p, #playlist > div p {
+    font-size: 16px;
+    color: #333333;
+}
+
+.welcome-banner {
+    background-image: url('banner-foto.jpg'); /* Troque pela sua imagem */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-banner h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.welcome-banner p {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background-color: #9b4d96;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #bb7fb3;
+}
+
+.playlist li {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.music-cover {
+    width: 50px;  /* Tamanho da capa */
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 8px; /* Bordas arredondadas na imagem */
+    object-fit: cover;  /* Para ajustar bem a imagem */
+}
+
+.playlist {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.playlist ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.playlist li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.playlist a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.playlist a:hover {
+    color: #9b4d96; /* Cor suave para hover */
+}
+
+.playlist p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Perfil, configurações e envio de mensagens */
+#profile, #settings, #sendMessage {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid #D1D1D1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 300px;
+}
+
+#profile h3, #settings h3, #sendMessage h3 {
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+#profile p, #settings p, #sendMessage p {
+    font-size: 18px;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Inputs */
+#profile input, #settings input, #sendMessage textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 25px;
+    border: 2px solid #D1D1D1;
+    margin-bottom: 10px;
+    background-color: #F5F5F5;
+    font-size: 16px;
+}
+
+#profile input[type="submit"], #sendMessage input[type="submit"] {
+    background-color: #555555;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#profile input[type="submit"]:hover, #sendMessage input[type="submit"]:hover {
+    background-color: #666666;
+}
+
+/* Layout responsivo */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #profile, #settings, #sendMessage {
+        width: 100%;
+        padding: 10px;
+    }
+}

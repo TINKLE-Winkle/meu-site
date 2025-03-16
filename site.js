@@ -36,7 +36,7 @@ function calcularTempoJuntos() {
 }
 
 const CLIENT_ID = "0a5c9c8b66d143cbb5d5925a5b198bac";
-const REDIRECT_URI = "http://localhost:5500"; // URL simples (não precisa de /callback)
+const REDIRECT_URI = "https://tinkle-winkle.github.io/meu-site/"; // URL simples (não precisa de /callback)
 const SCOPES = "streaming user-read-email user-read-private";
 
 function loginSpotify() {
